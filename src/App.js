@@ -15,6 +15,15 @@ function App() {
     setNombre(document.querySelector(".nombreClass").value);
     setDni(document.querySelector(".dniClass").value)
     document.querySelector(".resultado").classList.remove("no-display");
+    
+    //Convierte los datos recibidos del form en un objeto,pero raro.
+    const myFormData = new FormData(e.target);
+    console.log(myFormData);
+
+    //Convierte ese objeto raro en un objeto normal.
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
 
   }
 
