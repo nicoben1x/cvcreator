@@ -27,6 +27,23 @@ function App() {
 
   }
 
+  
+  function preventThis2(e) {
+    e.preventDefault();
+    
+    
+    //Convierte los datos recibidos del form en un objeto,pero raro.
+    const myFormData = new FormData(e.target);
+    console.log(myFormData);
+
+    //Convierte ese objeto raro en un objeto normal.
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
+
+  }
+
+
   return (
     <div className="App">
       <div className="principal-div">
@@ -50,7 +67,7 @@ function App() {
         <div className="experiencia">
           <label htmlFor="experienciafor">Ingresa tu Experiencia:</label>
           <button className="btn-enviar" onClick={addExperiencia}>Añadir</button>
-          <form className="exp-form no-display">
+          <form onSubmit={preventThis2}className="exp-form no-display">
             <label htmlFor="nombre-exp">Empresa:</label>
             <input required className="nombre-exp" type="text" name="nombre-exp" />
             <label htmlFor="empleo-exp">Empleo:</label>
