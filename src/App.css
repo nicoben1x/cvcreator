@@ -25,12 +25,48 @@
   margin: 10px;
 
 }
+.educacion{
+  background-color: rgb(208, 175, 133);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+
+.skills{
+  background-color: rgb(208, 175, 133);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+.idiomas{
+  background-color: rgb(208, 175, 133);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+
 .div-test{
   display: flex;
   flex-direction: column;
 
 }
 .exp-form{
+  display: flex;
+  flex-direction: column;
+}
+.edu-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-form{
+  display: flex;
+  flex-direction: column;
+}
+.idiomas-form{
   display: flex;
   flex-direction: column;
 }
