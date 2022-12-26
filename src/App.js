@@ -8,19 +8,23 @@ function App() {
   const [experienciaitem, setExperiencia] = useState([]);
 
   function addExperiencia() {
-    document.querySelector(".exp-form").classList.remove("no-display");
+    document.querySelector(".exp-form").reset();
+    document.querySelector(".exp-form").classList.toggle("no-display");
   }
 
   function addEducacion() {
-    document.querySelector(".edu-form").classList.remove("no-display");
+    document.querySelector(".edu-form").reset();
+    document.querySelector(".edu-form").classList.toggle("no-display");
   }
 
   function addSkills() {
-    document.querySelector(".skills-form").classList.remove("no-display");
+    document.querySelector(".skills-form").reset();
+    document.querySelector(".skills-form").classList.toggle("no-display");
   }
 
   function addIdiomas() {
-    document.querySelector(".idiomas-form").classList.remove("no-display");
+    document.querySelector(".idiomas-form").reset();
+    document.querySelector(".idiomas-form").classList.toggle("no-display");
   }
 
   function preventThis2(e) {
@@ -97,7 +101,7 @@ function App() {
             <input required className="imagen-per" type="text" name="imagen-per" />
 
 
-            <input className="btn-enviar" type="submit" value="Enviar" />
+            <input className="btn-enviar" type="submit" value="Guardar" />
 
 
           </div>
@@ -109,8 +113,8 @@ function App() {
 
         <div className="experiencia">
           <label htmlFor="experienciafor">Ingresa tu Experiencia:</label>
-          <button className="btn-enviar" onClick={addExperiencia}>Añadir</button>
-          <form onSubmit={preventThis2} className="exp-form no-display">
+          <button className="btn-enviar" onClick={addExperiencia}>↓↑</button>
+          <form onSubmit={preventThis2} id="exp-form-id" className="exp-form no-display">
             <label htmlFor="nombre-exp">Empresa:</label>
             <input required className="nombre-exp" type="text" name="nombre-exp" />
             <label htmlFor="empleo-exp">Empleo:</label>
@@ -121,13 +125,13 @@ function App() {
             <input required className="desc-exp" type="text" name="desc-exp" />
             <label htmlFor="imagen-exp">Imagen:</label>
             <input required className="imagen-exp" type="text" name="imagen-exp" />
-            <input className="btn-enviar" type="submit" value="Enviar" />
+            <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
         </div>
 
         <div className="educacion">
           <label htmlFor="educacionfor">Ingresa tu Educacion:</label>
-          <button className="btn-enviar" onClick={addEducacion}>Añadir</button>
+          <button className="btn-enviar" onClick={addEducacion}>↓↑</button>
           <form onSubmit={preventThis2} className="edu-form no-display">
             <label htmlFor="nombre-edu">Institucion:</label>
             <input required className="nombre-edu" type="text" name="nombre-edu" />
@@ -139,31 +143,31 @@ function App() {
             <input required className="desc-edu" type="text" name="desc-edu" />
             <label htmlFor="imagen-exp">Imagen:</label>
             <input required className="imagen-edu" type="text" name="imagen-edu" />
-            <input className="btn-enviar" type="submit" value="Enviar" />
+            <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
         </div>
 
         <div className="skills">
           <label htmlFor="skillsfor">Ingresa tu Habilidad:</label>
-          <button className="btn-enviar" onClick={addSkills}>Añadir</button>
+          <button className="btn-enviar" onClick={addSkills}>↓↑</button>
           <form onSubmit={preventThis2} className="skills-form no-display">
             <label htmlFor="nombre-skills">Habilidad:</label>
             <input required className="nombre-skills" type="text" name="nombre-skills" />
             <label htmlFor="nivel-skills">Porcentaje:</label>
             <input required className="nivel-skills" type="text" name="nivel-skills" />
-            <input className="btn-enviar" type="submit" value="Enviar" />
+            <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
         </div>
 
         <div className="idiomas">
           <label htmlFor="idiomasfor">Ingresa tu Idioma:</label>
-          <button className="btn-enviar" onClick={addIdiomas}>Añadir</button>
+          <button className="btn-enviar" onClick={addIdiomas}>↓↑</button>
           <form onSubmit={preventThis2} className="idiomas-form no-display">
             <label htmlFor="nombre-idiomas">Idioma:</label>
             <input required className="nombre-idiomas" type="text" name="nombre-idiomas" />
             <label htmlFor="nivel-idiomas">Porcentaje:</label>
             <input required className="nivel-idiomas" type="text" name="nivel-idiomas" />
-            <input className="btn-enviar" type="submit" value="Enviar" />
+            <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
         </div>
 
