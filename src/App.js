@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
+import { Experiencia } from "./Experiencia";
 
 function App() {
+
+
 
   const [nombre, setNombre] = useState('');
   const [dni, setDni] = useState('');
   const [experienciaitem, setExperiencia] = useState([]);
+  const [educacionitem, setEducacion] = useState([]);
+  const [habilidaditem, setHabilidad] = useState([]);
+  const [idiomaitem, setIdioma] = useState([]);
+  const [usuarioitem, setUsuario] = useState([]);
 
   function addExperiencia() {
     document.querySelector(".exp-form").reset();
@@ -45,8 +52,7 @@ function App() {
     console.log(formDataObj);
 
     //Añade el objeto a la lista de experiencias
-    const newArray = experienciaitem;
-    newArray.push(formDataObj)
+    const newArray = [...experienciaitem, formDataObj];
     setExperiencia(newArray);
     console.log(experienciaitem);
 
@@ -56,12 +62,14 @@ function App() {
 
   }
 
-  function preventThis(e) {
+  function preventThis2Idiomas(e) {
+
+    // IMPORTANTE !! -- Hay que hacer una funcion por cada segmento, esta esta hecha para experiencia.
+
+
+    //Evita que se recarge toda la pagina web
     e.preventDefault();
-    setNombre(document.querySelector(".nombreClass").value);
-    setDni(document.querySelector(".dniClass").value)
-    document.querySelector(".resultado").classList.remove("no-display");
-    
+
     //Convierte los datos recibidos del form en un objeto,pero raro.
     const myFormData = new FormData(e.target);
     console.log(myFormData);
@@ -71,10 +79,106 @@ function App() {
     myFormData.forEach((value, key) => (formDataObj[key] = value));
     console.log(formDataObj);
 
+    //Añade el objeto a la lista de experiencias
+    const newArray = [...idiomaitem, formDataObj];
+    setIdioma(newArray);
+    console.log(idiomaitem);
+
+    //
+
+    document.querySelector(".idiomas-form").classList.add("no-display");
+
+  }
+
+  function preventThis2Habilidad(e) {
+
+    // IMPORTANTE !! -- Hay que hacer una funcion por cada segmento, esta esta hecha para experiencia.
+
+
+    //Evita que se recarge toda la pagina web
+    e.preventDefault();
+
+    //Convierte los datos recibidos del form en un objeto,pero raro.
+    const myFormData = new FormData(e.target);
+    console.log(myFormData);
+
+    //Convierte ese objeto raro en un objeto normal.
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
+
+    //Añade el objeto a la lista de experiencias
+    const newArray = [...habilidaditem, formDataObj];
+    setHabilidad(newArray);
+    console.log(habilidaditem);
+
+    //
+
+    document.querySelector(".skills-form").classList.add("no-display");
+
+  }
+
+  function preventThis2Educacion(e) {
+
+    // IMPORTANTE !! -- Hay que hacer una funcion por cada segmento, esta esta hecha para experiencia.
+
+
+    //Evita que se recarge toda la pagina web
+    e.preventDefault();
+
+    //Convierte los datos recibidos del form en un objeto,pero raro.
+    const myFormData = new FormData(e.target);
+    console.log(myFormData);
+
+    //Convierte ese objeto raro en un objeto normal.
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
+
+    //Añade el objeto a la lista de experiencias
+    const newArray = [...educacionitem, formDataObj];
+    setEducacion(newArray);
+    console.log(educacionitem);
+
+    //
+
+    document.querySelector(".edu-form").classList.add("no-display");
+
+  }
+
+  function preventThis(e) {
+    e.preventDefault();
+    setNombre(document.querySelector(".nombreClass").value);
+    setDni(document.querySelector(".dniClass").value)
+    document.querySelector(".resultado").classList.remove("no-display");
+
+    //Convierte los datos recibidos del form en un objeto,pero raro.
+    const myFormData = new FormData(e.target);
+    console.log(myFormData);
+
+    //Convierte ese objeto raro en un objeto normal.
+    const formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
+
+    //Añade el objeto a la lista de experiencias
+    const newArray = [...usuarioitem, formDataObj];
+    setUsuario(newArray);
+    console.log(usuarioitem);
+
   }
 
   return (
+
+
     <div className="App">
+
+
+
+
+
+
+
       <div className="principal-div">
         <h1 >Crea tu CV!</h1>
         <form onSubmit={preventThis} >
@@ -93,7 +197,7 @@ function App() {
             <input required className="dir-per" type="text" name="dir-per" />
             <label htmlFor="edad-per">Edad:</label>
             <input required className="edad-per" type="text" name="edad-per" />
-            
+
             <label htmlFor="dni">Ingresa tu DNI:</label>
             <input required className="dniClass" type="number" name="dni" />
 
@@ -113,6 +217,7 @@ function App() {
 
         <div className="experiencia">
           <label htmlFor="experienciafor">Ingresa tu Experiencia:</label>
+
           <button className="btn-enviar" onClick={addExperiencia}>↓↑</button>
           <form onSubmit={preventThis2} id="exp-form-id" className="exp-form no-display">
             <label htmlFor="nombre-exp">Empresa:</label>
@@ -127,12 +232,22 @@ function App() {
             <input required className="imagen-exp" type="text" name="imagen-exp" />
             <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
+
+
+          
+
+      <Experiencia arr={experienciaitem}/>
+
+
+
+
+
         </div>
 
         <div className="educacion">
           <label htmlFor="educacionfor">Ingresa tu Educacion:</label>
           <button className="btn-enviar" onClick={addEducacion}>↓↑</button>
-          <form onSubmit={preventThis2} className="edu-form no-display">
+          <form onSubmit={preventThis2Educacion} className="edu-form no-display">
             <label htmlFor="nombre-edu">Institucion:</label>
             <input required className="nombre-edu" type="text" name="nombre-edu" />
             <label htmlFor="titulo-edu">Titulo:</label>
@@ -150,7 +265,7 @@ function App() {
         <div className="skills">
           <label htmlFor="skillsfor">Ingresa tu Habilidad:</label>
           <button className="btn-enviar" onClick={addSkills}>↓↑</button>
-          <form onSubmit={preventThis2} className="skills-form no-display">
+          <form onSubmit={preventThis2Habilidad} className="skills-form no-display">
             <label htmlFor="nombre-skills">Habilidad:</label>
             <input required className="nombre-skills" type="text" name="nombre-skills" />
             <label htmlFor="nivel-skills">Porcentaje:</label>
@@ -162,7 +277,7 @@ function App() {
         <div className="idiomas">
           <label htmlFor="idiomasfor">Ingresa tu Idioma:</label>
           <button className="btn-enviar" onClick={addIdiomas}>↓↑</button>
-          <form onSubmit={preventThis2} className="idiomas-form no-display">
+          <form onSubmit={preventThis2Idiomas} className="idiomas-form no-display">
             <label htmlFor="nombre-idiomas">Idioma:</label>
             <input required className="nombre-idiomas" type="text" name="nombre-idiomas" />
             <label htmlFor="nivel-idiomas">Porcentaje:</label>
@@ -177,12 +292,15 @@ function App() {
 
       </div>
 
-      <div>
-        <h3 className="resultado no-display">Hola {nombre}, tu dni es {dni}.</h3>
-      </div>
+      <div>Holawasdfsdfsdffsa</div>
+
+
+
 
     </div>
   );
+
+
 }
 
 export default App;
