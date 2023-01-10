@@ -16,8 +16,7 @@ function App() {
   const [educacionitem, setEducacion] = useState([]);
   const [habilidaditem, setHabilidad] = useState([]);
   const [idiomaitem, setIdioma] = useState([]);
-  const [usuarioitem, setUsuario] = useState([]);
-  const [usuario, setUsuarioi] = useState ({});
+  const [usuarioi, setUsuarioi] = useState ({});
 
   function addExperiencia() {
     document.querySelector(".exp-form").reset();
@@ -167,7 +166,7 @@ function App() {
     //Añade el objeto a la lista de experiencias
     const newArray = [formDataObj];
     setUsuarioi(formDataObj);
-    console.log(usuarioitem);
+
 
   }
 
@@ -216,7 +215,7 @@ function App() {
 
         </form>
 
-        <Usuario arr={usuario}/>
+        <Usuario arr={usuarioi}/>
 
 
 
