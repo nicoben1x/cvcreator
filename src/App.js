@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
+import { Educacion } from "./Educacion";
 import { Experiencia } from "./Experiencia";
+import { Habilidad } from "./Habilidad";
+import { Idiomas } from "./Idiomas";
+import { Usuario } from "./Usuario";
 
 function App() {
 
@@ -13,6 +17,7 @@ function App() {
   const [habilidaditem, setHabilidad] = useState([]);
   const [idiomaitem, setIdioma] = useState([]);
   const [usuarioitem, setUsuario] = useState([]);
+  const [usuario, setUsuarioi] = useState ({});
 
   function addExperiencia() {
     document.querySelector(".exp-form").reset();
@@ -148,9 +153,7 @@ function App() {
 
   function preventThis(e) {
     e.preventDefault();
-    setNombre(document.querySelector(".nombreClass").value);
-    setDni(document.querySelector(".dniClass").value)
-    document.querySelector(".resultado").classList.remove("no-display");
+
 
     //Convierte los datos recibidos del form en un objeto,pero raro.
     const myFormData = new FormData(e.target);
@@ -162,8 +165,8 @@ function App() {
     console.log(formDataObj);
 
     //Añade el objeto a la lista de experiencias
-    const newArray = [...usuarioitem, formDataObj];
-    setUsuario(newArray);
+    const newArray = [formDataObj];
+    setUsuarioi(formDataObj);
     console.log(usuarioitem);
 
   }
@@ -213,6 +216,9 @@ function App() {
 
         </form>
 
+        <Usuario arr={usuario}/>
+
+
 
 
         <div className="experiencia">
@@ -260,6 +266,20 @@ function App() {
             <input required className="imagen-edu" type="text" name="imagen-edu" />
             <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
+
+
+          <Educacion arr={educacionitem}/>
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
         <div className="skills">
@@ -272,6 +292,11 @@ function App() {
             <input required className="nivel-skills" type="text" name="nivel-skills" />
             <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
+
+
+          <Habilidad arr={habilidaditem}/>
+
+
         </div>
 
         <div className="idiomas">
@@ -284,6 +309,11 @@ function App() {
             <input required className="nivel-idiomas" type="text" name="nivel-idiomas" />
             <input className="btn-enviar" type="submit" value="Guardar" />
           </form>
+
+
+          <Idiomas arr={idiomaitem}/>
+
+
         </div>
 
 
